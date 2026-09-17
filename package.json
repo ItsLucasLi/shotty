@@ -1,0 +1,29 @@
+{
+  "name": "shotty",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Beautify your screenshots — backgrounds, padding, shadows. Runs entirely in your browser.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve@latest out",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "15.5.25",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.1.13",
+    "@types/node": "22.18.1",
+    "@types/react": "19.1.13",
+    "@types/react-dom": "19.1.9",
+    "eslint": "9.36.0",
+    "eslint-config-next": "15.5.25",
+    "tailwindcss": "4.1.13",
+    "typescript": "5.9.2"
+  }
+}

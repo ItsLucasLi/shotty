@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-canvas: #faf9f7;
+  --color-surface: #ffffff;
+  --color-line: #e7e3dd;
+  --color-line-strong: #d4cfc7;
+  --color-ink: #1b1a18;
+  --color-muted: #726c64;
+  --color-faint: #a39d94;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The sliders are the only controls with real weight, so they get styled by
+   hand rather than left to the browser. */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+  height: 2px;
+  background: var(--color-line-strong);
+}
+
+input[type='range']::-moz-range-track {
+  height: 2px;
+  background: var(--color-line-strong);
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 13px;
+  height: 13px;
+  margin-top: -5.5px;
+  border-radius: 9999px;
+  background: var(--color-ink);
+  border: none;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+  border: none;
+  border-radius: 9999px;
+  background: var(--color-ink);
+}
+
+input[type='range']:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+input[type='range']:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+/* Strip the chrome the native colour input insists on. */
+input[type='color'] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+input[type='color']::-webkit-color-swatch,
+input[type='color']::-moz-color-swatch {
+  border: none;
+  border-radius: 2px;
+}
