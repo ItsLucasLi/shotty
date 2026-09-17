@@ -4,8 +4,7 @@ Add a background, padding, rounded corners and a shadow to a screenshot, then ex
 
 **Everything runs in your browser.** Your image is never uploaded — there is no server to upload it to. No account, no watermark, no tracking. `next build` emits a static site, so the deployed app is nothing but HTML, CSS and JavaScript.
 
-<!-- Replace with a screenshot of the app: docs/screenshot.png -->
-![Shotty](docs/screenshot.png)
+![Shotty: a screenshot loaded into the editor, with background, padding, corner and shadow controls below it](docs/screenshot.png)
 
 ## Features
 
