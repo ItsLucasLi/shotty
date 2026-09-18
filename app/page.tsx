@@ -5,7 +5,9 @@ import { ControlBar } from '@/components/controls/ControlBar';
 import { Dropzone } from '@/components/Dropzone';
 import { Logo } from '@/components/Logo';
 import { Preview } from '@/components/Preview';
+import { ThemeToggle } from '@/components/controls/ThemeToggle';
 import { useImageInput } from '@/hooks/useImageInput';
+import { useTheme } from '@/hooks/useTheme';
 import { DEFAULT_COMPOSITION, type Composition } from '@/lib/composition';
 import type { ExportScale } from '@/lib/export';
 import { ImageLoadError, loadImage } from '@/lib/image';
@@ -18,6 +20,7 @@ export default function Page() {
 
   const { image, error, isDraggingOver, dropHandlers, accept, clear, setError } =
     useImageInput();
+  const { theme, toggle: toggleTheme, ready: themeReady } = useTheme();
 
   // There are two independent image inputs now — the screenshot and the
   // background — so each owns its own object URL. This ref tracks the
@@ -70,9 +73,12 @@ export default function Page() {
           <Logo size={20} />
           Shotty
         </h1>
-        <p className="text-xs text-muted">
-          Runs entirely in your browser. Images are never uploaded.
-        </p>
+        <div className="flex items-center gap-5">
+          <p className="text-xs text-muted">
+            Runs entirely in your browser. Images are never uploaded.
+          </p>
+          <ThemeToggle theme={theme} onToggle={toggleTheme} ready={themeReady} />
+        </div>
       </header>
 
       <main className="flex min-h-0 flex-1 flex-col px-6 py-8">

@@ -25,6 +25,59 @@
   --radius-xl: 20px;
 }
 
+/* ---------------------------------------------------------------------------
+   Theming.
+
+   Light values live in @theme above. The two rules below restate the dark
+   values: the media query is "follow the system", and applies only while the
+   user has not pinned light; the attribute rule is an explicit override and
+   wins on specificity. The duplication is deliberate — CSS cannot apply one
+   block from two conditions, and an indirection layer would cost more clarity
+   than the repeated lines do.
+
+   Nothing here reaches the composition. The preview box and the exported PNG
+   are painted from the Composition object alone, so the UI theme cannot change
+   a single pixel of the output.
+   --------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+  --logo-mark: #000000;
+  --logo-shadow: #b4b4b4;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+
+    --color-canvas: #17161a;
+    --color-surface: #201f24;
+    --color-line: #2f2d34;
+    --color-line-strong: #454249;
+    --color-ink: #f1efec;
+    --color-muted: #a7a2a9;
+    --color-faint: #857f88;
+
+    --logo-mark: #ffffff;
+    --logo-shadow: #666666;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-canvas: #17161a;
+  --color-surface: #201f24;
+  --color-line: #2f2d34;
+  --color-line-strong: #454249;
+  --color-ink: #f1efec;
+  --color-muted: #a7a2a9;
+  --color-faint: #857f88;
+
+  --logo-mark: #ffffff;
+  --logo-shadow: #666666;
+}
+
 html,
 body {
   height: 100%;

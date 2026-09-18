@@ -15,6 +15,7 @@ Add a background, padding, rounded corners and a shadow to a screenshot, then ex
 - **Padding, corner radius and shadow** — one slider each
 - **Aspect ratio** — Auto, 1:1, 16:9, 4:3
 - **PNG export at 1x or 2x** — redrawn from the original image data, not scraped off the page
+- **Light and dark** — follows your system, with a switch to override it
 
 ## Local development
 
@@ -41,6 +42,8 @@ The live preview is plain DOM and CSS, so dragging a slider updates on the next 
 
 A custom background image is read from your disk and decoded in the page, exactly like the screenshot itself — no fetch, and no photos are bundled with the app. It is scaled to **cover** the canvas and centred, cropping whichever axis overflows, which is the same rule CSS `background-size: cover` applies. There is no fit control in v1.
 
+The UI theme is entirely separate from the artwork. The preview box and the exported PNG are painted from the `Composition` alone, so switching between light and dark cannot change a single pixel of the output — the export is byte-identical either way.
+
 Both paths read one `Composition` object and derive their geometry from a single pure function, `resolveLayout()` in [`lib/composition.ts`](lib/composition.ts), so the preview and the PNG cannot drift apart. Geometry is stored in composition units where 1 unit is 1 pixel of the source image, which means a 2x export is exactly twice a 1x export, and a 1x export with padding, radius and shadow at zero is pixel-for-pixel identical to the image you put in.
 
 ## Roadmap
@@ -49,7 +52,6 @@ Both paths read one `Composition` object and derive their geometry from a single
 - Text and arrow annotations
 - Multi-image layouts
 - Saved presets
-- Dark mode
 
 ## Licence
 
