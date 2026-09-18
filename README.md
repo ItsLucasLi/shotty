@@ -1,3 +1,5 @@
+<img src="docs/logo.png" alt="" width="56">
+
 # Shotty
 
 Add a background, padding, rounded corners and a shadow to a screenshot, then export it as a PNG.
