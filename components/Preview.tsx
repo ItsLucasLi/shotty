@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { resolveLayout, type Composition, type SourceImage } from '@/lib/composition';
-import { backgroundToCss } from '@/lib/backgrounds';
+import { backgroundToStyle } from '@/lib/backgrounds';
 
 /**
  * The live preview: DOM and CSS, so slider changes land on the next frame.
@@ -59,7 +59,7 @@ export function Preview({
             style={{
               width: layout.canvas.width * scale,
               height: layout.canvas.height * scale,
-              background: backgroundToCss(composition.background),
+              ...backgroundToStyle(composition.background),
             }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}

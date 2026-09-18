@@ -9,7 +9,7 @@ Add a background, padding, rounded corners and a shadow to a screenshot, then ex
 ## Features
 
 - **Paste, drop or pick** — `⌘V` / `Ctrl+V` straight after taking a screenshot
-- **Backgrounds** — solid and gradient presets, plus any custom colour
+- **Backgrounds** — solid and gradient presets, any custom colour, or an image of your own
 - **Padding, corner radius and shadow** — one slider each
 - **Aspect ratio** — Auto, 1:1, 16:9, 4:3
 - **PNG export at 1x or 2x** — redrawn from the original image data, not scraped off the page
@@ -36,6 +36,8 @@ npm run lint
 ## How it renders
 
 The live preview is plain DOM and CSS, so dragging a slider updates on the next frame. Export is a separate path: it redraws the composition onto a `<canvas>` from the original decoded image, with the rounded corners applied as a real clip path. No DOM-screenshot library is involved, so the output is deterministic — the same settings give the same pixels in every browser.
+
+A custom background image is read from your disk and decoded in the page, exactly like the screenshot itself — no fetch, and no photos are bundled with the app. It is scaled to **cover** the canvas and centred, cropping whichever axis overflows, which is the same rule CSS `background-size: cover` applies. There is no fit control in v1.
 
 Both paths read one `Composition` object and derive their geometry from a single pure function, `resolveLayout()` in [`lib/composition.ts`](lib/composition.ts), so the preview and the PNG cannot drift apart. Geometry is stored in composition units where 1 unit is 1 pixel of the source image, which means a 2x export is exactly twice a 1x export, and a 1x export with padding, radius and shadow at zero is pixel-for-pixel identical to the image you put in.
 

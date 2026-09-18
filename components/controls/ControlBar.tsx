@@ -34,6 +34,7 @@ export function ControlBar({
   exportScale,
   onExportScaleChange,
   onReplace,
+  onPickBackgroundImage,
 }: {
   composition: Composition;
   onChange: (patch: Partial<Composition>) => void;
@@ -41,15 +42,17 @@ export function ControlBar({
   exportScale: ExportScale;
   onExportScaleChange: (scale: ExportScale) => void;
   onReplace: () => void;
+  onPickBackgroundImage: (file: File | null | undefined) => void;
 }) {
   return (
-    <div className="rounded-t-lg border border-b-0 border-line bg-surface">
+    <div className="rounded-t-xl border border-b-0 border-line bg-surface">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-5">
         <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
           <Group label="Background">
             <BackgroundPicker
               value={composition.background}
               onChange={(background) => onChange({ background })}
+              onPickImage={onPickBackgroundImage}
             />
           </Group>
 

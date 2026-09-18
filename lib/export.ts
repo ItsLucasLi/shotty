@@ -5,7 +5,7 @@ import {
   type Layout,
   type SourceImage,
 } from './composition';
-import { backgroundToCanvasStyle } from './backgrounds';
+import { paintBackground } from './backgrounds';
 
 /**
  * The export renderer.
@@ -93,8 +93,7 @@ export function renderComposition(
   ctx.imageSmoothingQuality = 'high';
 
   // 1. Background.
-  ctx.fillStyle = backgroundToCanvasStyle(ctx, composition.background, width, height);
-  ctx.fillRect(0, 0, width, height);
+  paintBackground(ctx, composition.background, width, height);
 
   const img = layout.image;
 

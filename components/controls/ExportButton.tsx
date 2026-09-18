@@ -51,7 +51,7 @@ export function ExportButton({
         type="button"
         onClick={handleExport}
         disabled={busy}
-        className="rounded-md border border-ink bg-ink px-4 py-1.5 text-xs text-canvas transition-opacity hover:opacity-85 disabled:opacity-50"
+        className="rounded-lg border border-ink bg-ink px-4 py-2 text-xs text-canvas transition-opacity hover:opacity-85 disabled:opacity-50"
       >
         {busy ? 'Exporting…' : 'Download PNG'}
       </button>

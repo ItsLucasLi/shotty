@@ -14,17 +14,38 @@ export type GradientStop = {
   offset: number;
 };
 
+/** A decoded image, ready for both an <img> tag and ctx.drawImage(). */
+export type SourceImage = {
+  element: HTMLImageElement;
+  objectUrl: string;
+  width: number;
+  height: number;
+  name: string;
+};
+
 export type Background =
   | { kind: 'solid'; color: string }
   /** `angle` follows the CSS convention: degrees clockwise, 0 = towards the top. */
-  | { kind: 'gradient'; angle: number; stops: GradientStop[] };
+  | { kind: 'gradient'; angle: number; stops: GradientStop[] }
+  /**
+   * An image the user picked from their own disk. Read locally and decoded in
+   * the page, exactly like the screenshot itself — nothing is fetched.
+   *
+   * `fit` is fixed to 'cover' in v1: the image fills the canvas, keeping its
+   * aspect ratio, cropped equally on the overflowing axis and centred.
+   */
+  | { kind: 'image'; source: SourceImage; fit: 'cover' };
 
 export type Aspect = 'auto' | '1:1' | '16:9' | '4:3';
 
 /**
- * The single parameter object. Serializable, DOM-free, and resolution
- * independent: the sliders hold normalized 0–1 values, so the same settings
- * look the same on a 900px screenshot and a 3000px one.
+ * The single parameter object. Resolution independent: the sliders hold
+ * normalized 0–1 values, so the same settings look the same on a 900px
+ * screenshot and a 3000px one.
+ *
+ * Plain data, with one exception: an image background carries a decoded
+ * image, the same way the composition's own source image is passed alongside.
+ * Whoever sets one owns revoking its object URL.
  */
 export type Composition = {
   background: Background;
@@ -35,15 +56,6 @@ export type Composition = {
   /** 0–1. One knob: drives shadow blur, spread, offset and opacity together. */
   shadow: number;
   aspect: Aspect;
-};
-
-/** A decoded image, ready for both an <img> tag and ctx.drawImage(). */
-export type SourceImage = {
-  element: HTMLImageElement;
-  objectUrl: string;
-  width: number;
-  height: number;
-  name: string;
 };
 
 export type Rect = { x: number; y: number; width: number; height: number };

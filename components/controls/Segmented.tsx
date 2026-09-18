@@ -22,7 +22,7 @@ export function Segmented<T extends string | number>({
     <div
       role="group"
       aria-label={label}
-      className="inline-flex gap-0.5 rounded-md border border-line bg-canvas p-0.5"
+      className="inline-flex gap-1 rounded-lg border border-line bg-canvas p-[3px]"
     >
       {options.map((option) => {
         const selected = option.value === value;
@@ -32,7 +32,7 @@ export function Segmented<T extends string | number>({
             type="button"
             aria-pressed={selected}
             onClick={() => onChange(option.value)}
-            className={`rounded-sm px-3 py-1 text-xs tabular-nums transition-colors ${
+            className={`rounded-md px-3 py-1.5 text-xs tabular-nums transition-colors ${
               selected
                 ? 'bg-ink text-canvas shadow-[0_1px_2px_rgba(15,23,42,0.18)]'
                 : 'text-muted hover:text-ink'
