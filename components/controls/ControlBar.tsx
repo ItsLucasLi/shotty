@@ -43,7 +43,7 @@ export function ControlBar({
   onReplace: () => void;
 }) {
   return (
-    <div className="border-t border-line bg-surface">
+    <div className="rounded-t-lg border border-b-0 border-line bg-surface">
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-5">
         <div className="grid grid-cols-1 gap-x-10 gap-y-6 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
           <Group label="Background">
@@ -92,7 +92,7 @@ export function ControlBar({
             <button
               type="button"
               onClick={onReplace}
-              className="border border-line-strong bg-surface px-3 py-1.5 text-xs text-muted transition-colors hover:border-ink hover:text-ink"
+              className="rounded-md border border-line-strong bg-surface px-3 py-1.5 text-xs text-muted transition-colors hover:border-ink hover:text-ink"
             >
               Replace image
             </button>

@@ -33,7 +33,7 @@ export function BackgroundPicker({
             aria-label={preset.label}
             aria-pressed={selected}
             onClick={() => onChange(preset.background)}
-            className={`h-6 w-6 border transition-shadow ${
+            className={`h-6 w-6 rounded-xs border transition-shadow ${
               selected
                 ? 'border-ink shadow-[0_0_0_2px_var(--color-canvas),0_0_0_3px_var(--color-ink)]'
                 : 'border-line-strong hover:border-ink'
@@ -45,7 +45,7 @@ export function BackgroundPicker({
       </div>
 
       <label
-        className={`flex h-6 cursor-pointer items-center gap-1.5 border px-2 text-xs transition-colors ${
+        className={`flex h-6 cursor-pointer items-center gap-1.5 rounded-sm border px-2 text-xs transition-colors ${
           isCustom ? 'border-ink text-ink' : 'border-line-strong text-muted hover:border-ink'
         }`}
         title="Custom colour"

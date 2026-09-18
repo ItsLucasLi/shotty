@@ -11,6 +11,18 @@
 
   --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
+
+  /* One radius scale, applied consistently:
+     xs  swatches and colour chips
+     sm  inputs, and the pill inside a segmented control
+     md  buttons and segmented control shells
+     lg  large surfaces — the control bar's top edge, the dropzone
+     Deliberately tight. The preview box itself stays square: it stands in
+     for the exported PNG, so rounding it would misrepresent the output. */
+  --radius-xs: 3px;
+  --radius-sm: 5px;
+  --radius-md: 7px;
+  --radius-lg: 12px;
 }
 
 html,
@@ -38,11 +50,13 @@ input[type='range'] {
 
 input[type='range']::-webkit-slider-runnable-track {
   height: 2px;
+  border-radius: 9999px;
   background: var(--color-line-strong);
 }
 
 input[type='range']::-moz-range-track {
   height: 2px;
+  border-radius: 9999px;
   background: var(--color-line-strong);
 }
 
@@ -92,5 +106,5 @@ input[type='color']::-webkit-color-swatch-wrapper {
 input[type='color']::-webkit-color-swatch,
 input[type='color']::-moz-color-swatch {
   border: none;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
 }

@@ -18,7 +18,7 @@ export function Dropzone({
       <button
         type="button"
         onClick={() => inputRef.current?.click()}
-        className={`flex h-full max-h-[32rem] w-full max-w-3xl flex-col items-center justify-center gap-3 border border-dashed px-8 text-center transition-colors ${
+        className={`flex h-full max-h-[32rem] w-full max-w-3xl flex-col items-center justify-center gap-3 rounded-lg border border-dashed px-8 text-center transition-colors ${
           isDraggingOver
             ? 'border-ink bg-surface'
             : 'border-line-strong hover:border-ink hover:bg-surface'
