@@ -48,6 +48,13 @@ export type Spring = {
   set(target: number, options?: { velocity?: number; cfg?: SpringConfig }): Spring;
   /** Place the value with no animation — used while a pointer is dragging. */
   jump(value: number): Spring;
+  /**
+   * Translate the whole trajectory — position and target — by delta. Any
+   * motion in flight carries on unchanged, just relative to the new endpoint.
+   * For a change that should land instantly without cancelling an animation
+   * already running on the same value.
+   */
+  shift(delta: number): Spring;
   done(t?: number, eps?: number): boolean;
   dispose(): void;
 };
@@ -133,6 +140,13 @@ export function spring(value: number, cfg: SpringConfig = SPRING.shape): Spring 
       x0 = to = v;
       v0 = 0;
       t0 = now();
+      wake();
+      return s;
+    },
+    shift(delta) {
+      // The displacement x0 − to, and so the whole closed-form path, is untouched.
+      x0 += delta;
+      to += delta;
       wake();
       return s;
     },
