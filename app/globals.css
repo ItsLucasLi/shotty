@@ -78,6 +78,15 @@
   --logo-shadow: #666666;
 }
 
+/* The export loader's rotation runs on the compositor thread, so it keeps
+   turning while the synchronous canvas draw holds the main thread. Rotation
+   only — the arc length and the button's shape are driven by springs. */
+@keyframes shotty-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -88,58 +97,6 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
-}
-
-/* The sliders are the only controls with real weight, so they get styled by
-   hand rather than left to the browser. */
-input[type='range'] {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 20px;
-  background: transparent;
-  cursor: pointer;
-}
-
-input[type='range']::-webkit-slider-runnable-track {
-  height: 2px;
-  border-radius: 9999px;
-  background: var(--color-line-strong);
-}
-
-input[type='range']::-moz-range-track {
-  height: 2px;
-  border-radius: 9999px;
-  background: var(--color-line-strong);
-}
-
-input[type='range']::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 13px;
-  height: 13px;
-  margin-top: -5.5px;
-  border-radius: 9999px;
-  background: var(--color-ink);
-  border: none;
-}
-
-input[type='range']::-moz-range-thumb {
-  width: 13px;
-  height: 13px;
-  border: none;
-  border-radius: 9999px;
-  background: var(--color-ink);
-}
-
-input[type='range']:focus-visible::-webkit-slider-thumb {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 2px;
-}
-
-input[type='range']:focus-visible::-moz-range-thumb {
-  outline: 2px solid var(--color-ink);
-  outline-offset: 2px;
 }
 
 /* Strip the chrome the native colour input insists on. */
